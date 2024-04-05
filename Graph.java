@@ -19,7 +19,7 @@ public class Graph {
         Node v2 = getNode(id2);
         if (v1 != null){
             if (v2 != null){
-                if (getEdge(id1, id2) == null){
+                if (getEdge(id1, id2) == null && getEdge(id2, id1) == null){
                     edges.add(new Edge(v1, v2, weight));
                     System.out.println("[Graph] Added edge with weight " + weight + ", and node ids " + id1 + " and " + id2);
                 }
@@ -41,6 +41,10 @@ public class Graph {
             edges.remove(getEdge(id1, id2));
             System.out.println("[Graph] Removed edge with ids " + id1 + " and " + id2);
         }
+        else if (getEdge(id2, id1) != null){
+            edges.remove(getEdge(id2, id1));
+            System.out.println("[Graph] Removed edge with ids " + id2 + " and " + id1);
+        }
         else{
             System.out.println("[Graph] There is no edge with ids " + id1 + " and " + id2);
         }
@@ -51,7 +55,6 @@ public class Graph {
 
         if (node != null){
             List<Edge> edgesToRemove = getEdges(id);
-            Edge edgeLog;
 
             if (edgesToRemove != null){
                 int i;
@@ -87,7 +90,7 @@ public class Graph {
         List<Edge> edgesTemp = new ArrayList<Edge>();
 
         if (edges != null){
-            int i = 0;
+            int i;
             for (i = 0; i < edges.size(); i++){
                 if (id == edges.get(i).v1.id || id == edges.get(i).v2.id){
                     edgesTemp.add(edges.get(i));
