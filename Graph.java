@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph {
-    public List<Node> nodes = new ArrayList<Node>();
-    public List<Edge> edges = new ArrayList<Edge>();
-    public void addNode(int id){
+    private List<Node> nodes = new ArrayList<Node>();
+    private List<Edge> edges = new ArrayList<Edge>();
+    public void createNode(int id){
         if (getNode(id) == null){
             nodes.add(new Node(id));
             System.out.println("[Graph] Added node with id " + id);
@@ -72,7 +72,7 @@ public class Graph {
         }
     }
 
-    public Node getNode(int id){
+    private Node getNode(int id){
         if (nodes != null){
             int i;
             for (i = 0; i < nodes.size(); i++){
@@ -86,7 +86,7 @@ public class Graph {
         return null;
     }
 
-    public List<Edge> getEdges(int id){
+    private List<Edge> getEdges(int id){
         List<Edge> edgesTemp = new ArrayList<Edge>();
 
         if (edges != null){
@@ -105,7 +105,7 @@ public class Graph {
     }
 
 
-    public Edge getEdge(int id1, int id2){
+    private Edge getEdge(int id1, int id2){
         if (edges != null){
             int i = 0;
             for (i = 0; i < edges.size(); i++){

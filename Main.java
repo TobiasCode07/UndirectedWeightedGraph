@@ -2,10 +2,10 @@ public class Main {
     public static void main(String[] args) {
         Graph graph = new Graph();
 
-        graph.addNode(1);
-        graph.addNode(7);
-        graph.addNode(7);
-        graph.addNode(3);
+        graph.createNode(1);
+        graph.createNode(7);
+        graph.createNode(7);
+        graph.createNode(3);
         graph.createEdge(1, 7, 3);
         graph.createEdge(1, 7, 3);
         graph.createEdge(7, 1, 3);
