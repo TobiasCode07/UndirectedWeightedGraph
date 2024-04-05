@@ -19,12 +19,17 @@ public class Graph {
         Node v2 = getNode(id2);
         if (v1 != null){
             if (v2 != null){
-                if (getEdge(id1, id2) == null && getEdge(id2, id1) == null){
-                    edges.add(new Edge(v1, v2, weight));
-                    System.out.println("[Graph] Added edge with weight " + weight + ", and node ids " + id1 + " and " + id2);
+                if (v1 != v2){
+                    if (getEdge(id1, id2) == null && getEdge(id2, id1) == null){
+                        edges.add(new Edge(v1, v2, weight));
+                        System.out.println("[Graph] Added edge with weight " + weight + ", and node ids " + id1 + " and " + id2);
+                    }
+                    else{
+                        System.out.println("[Graph] There already is an edge with ids " + id1 + " and " + id2);
+                    }
                 }
                 else{
-                    System.out.println("[Graph] There already is an edge with ids " + id1 + " and " + id2);
+                    System.out.println("[Graph] Ids must be different");
                 }
             }
             else{
