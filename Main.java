@@ -8,6 +8,7 @@ public class Main {
         graph.createNode(3);
         graph.createEdge(1, 7, 3);
         graph.createEdge(1, 7, 3);
+        graph.createEdge(1, 1, 3);
         graph.createEdge(7, 1, 3);
         graph.createEdge(3, 7, 3);
         graph.removeEdge(7, 1);
