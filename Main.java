@@ -1,6 +1,3 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -23,6 +20,8 @@ public class Main {
         graph.createEdge(6, 5, 3);
         graph.createEdge(7, 3, 5);
 
-        System.out.println(graph.shortestPath(4, 6));
+        System.out.println("[Main] Shortest path cost: " + graph.shortestPath(1, 7));
+        System.out.println("[Main] Shortest path cost: " + graph.shortestPath(1, 4));
+        System.out.println("[Main] Shortest path cost: " + graph.shortestPath(3, 6));
     }
 }
