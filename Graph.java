@@ -1,10 +1,58 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Graph {
     private List<Node> nodes = new ArrayList<Node>();
     private List<Edge> edges = new ArrayList<Edge>();
+
+    public List<Edge> minimalSpanningTreeKruskal() {
+        List<Edge> mst = new ArrayList<>();
+        List<List<Node>> sets = new ArrayList<>();
+
+        for (Node node : nodes) {
+            List<Node> set = new ArrayList<>();
+            set.add(node);
+            sets.add(set);
+        }
+
+        edges.sort(Comparator.comparingInt(edge -> edge.weight));
+
+        for (Edge edge : edges) {
+            Node v1 = edge.v1;
+            Node v2 = edge.v2;
+
+            List<Node> set1 = findSet(sets, v1);
+            List<Node> set2 = findSet(sets, v2);
+
+            if (set1 != set2) {
+                mst.add(edge);
+                set1.addAll(set2);
+                sets.remove(set2);
+            }
+        }
+
+        return mst;
+    }
+
+    public int minimalSpanningTreeKruskalWeight(){
+        List<Edge> minimalSpanningTree = new ArrayList<>();
+        minimalSpanningTree = minimalSpanningTreeKruskal();
+        int weight = 0;
+
+        for (int i = 0; i < minimalSpanningTree.size(); i++){
+            weight += minimalSpanningTree.get(i).weight;
+        }
+
+        return weight;
+    }
+
+    private List<Node> findSet(List<List<Node>> sets, Node node) {
+        for (List<Node> set : sets) {
+            if (set.contains(node)) {
+                return set;
+            }
+        }
+        return null;
+    }
 
     public int countNodes(){
         return nodes.size();
@@ -178,11 +226,14 @@ public class Graph {
         return edgesTemp;
     }
 
-    private Edge getEdge(int id1, int id2){
+    public Edge getEdge(int id1, int id2){
         if (edges != null){
             int i = 0;
             for (i = 0; i < edges.size(); i++){
                 if (id1 == edges.get(i).v1.id && id2 == edges.get(i).v2.id){
+                    return edges.get(i);
+                }
+                else if (id2 == edges.get(i).v1.id && id1 == edges.get(i).v2.id){
                     return edges.get(i);
                 }
             }
