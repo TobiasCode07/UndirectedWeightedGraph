@@ -79,4 +79,10 @@ public class TestGraph {
         Assertions.assertEquals(expectedMinimalSpanningTreeWeight, graph.minimalSpanningTreeKruskalWeight());
     }
 
+    @Test
+    void ShouldFindMinimalColorNumber(){
+        final int expectedMinimalColorNumber = 3;
+        Assertions.assertEquals(expectedMinimalColorNumber, graph.minimalColorNumber());
+    }
+
 }
